@@ -74,6 +74,9 @@ pub fn AsciiBarChart(props: BarProps<SalesData>) -> Element {
         .map(|s| s.model.chars().count())
         .unwrap_or(0);
 
+    let src = "image src";
+    let class = "css class";
+
     rsx! {
         div {
             for item in items.clone().iter() {
@@ -96,6 +99,12 @@ pub fn AsciiBarChart(props: BarProps<SalesData>) -> Element {
                     rsx! {
                         div {
                             key: "{y}",
+                            class,
+
+                            img {
+                                src,
+                            }
+
                             div {
                                 style: "display: inline-block",
                                 pre {
