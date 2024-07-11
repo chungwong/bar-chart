@@ -22,6 +22,23 @@ pub struct BarProps<Bar: BarChartExt<X: Clone + PartialEq + 'static> + Clone + P
 }
 
 #[component]
+fn Label(y: String, max_y: usize, image: Option<String>) -> Element {
+    rsx! {
+        div {
+            if let Some(src) = image {
+                img {
+                    alt: "Image",
+                    loading: "lazy",
+                    width: 20,
+                    height: 20,
+                    src
+                }
+            }
+        }
+    }
+}
+
+#[component]
 pub fn AsciiBarChart<
     Bar: BarChartExt<X: Clone + PartialEq + 'static> + Clone + PartialEq + 'static,
 >(
